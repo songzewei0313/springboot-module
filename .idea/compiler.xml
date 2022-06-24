@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springboot-redis" />
+        <module name="springboot-minio" />
+        <module name="springboot-elasticsearch" />
+        <module name="springboot-graphics" />
+        <module name="springboot-mybatis" />
+        <module name="springboot-common" />
+        <module name="springboot-view" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="springboot-common" options="-parameters" />
+      <module name="springboot-elasticsearch" options="-parameters" />
+      <module name="springboot-graphics" options="-parameters" />
+      <module name="springboot-minio" options="-parameters" />
+      <module name="springboot-mybatis" options="-parameters" />
+      <module name="springboot-redis" options="-parameters" />
+      <module name="springboot-view" options="-parameters" />
+    </option>
+  </component>
+</project>

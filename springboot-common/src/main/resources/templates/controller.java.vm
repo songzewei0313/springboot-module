@@ -1,0 +1,83 @@
+package ${package.Controller};
+
+import com.alibaba.fastjson.JSONObject;
+import ${package.Service}.${table.serviceName};
+import com.song.domain.entity.${entity};
+import com.song.common.utils.EntityQueryUtil;
+import com.song.base.Log;
+import com.song.domain.vo.Result;
+import com.song.common.utils.ResultUtil;
+import lombok.RequiredArgsConstructor;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import com.song.domain.vo.PageParam;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * <p>
+ * ${table.comment}  前端控制器
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@RequiredArgsConstructor
+@RestController
+##@CrossOrigin
+@RequestMapping("/${table.entityPath}")
+@Api(tags = "${table.comment}")
+public class ${entity}Controller {
+    public final ${table.serviceName} ${table.entityPath}Service;
+
+    @PostMapping("/insert")
+    @ApiOperation(value = "增加", notes = "新增", httpMethod = "POST")
+    @Log("增加")
+    public Result insert(@RequestBody ${entity} ${table.entityPath}){
+        return ResultUtil.res(${table.entityPath}Service.save(${table.entityPath}));
+    }
+
+    @PostMapping("/update")
+    @ApiOperation(value = "修改", notes = "根据ID修改", httpMethod = "POST")
+    @Log("修改")
+    public Result updateById(@RequestBody ${entity} ${table.entityPath}){
+        return ResultUtil.res(${table.entityPath}Service.updateById(${table.entityPath}));
+    }
+
+    @PostMapping("/delete")
+    @ApiOperation(value = "删除", notes = "删除(多个ID逗号拼接如1,2,3)(参数示例{'ids':'1,2,3'})", httpMethod = "POST")
+    @Log("删除")
+    public Result delete(@RequestBody Map<String, String> param){
+        String ids = param.get("ids");
+        String[] idItem = ids.split(",");
+        List<String> idList = Arrays.asList(idItem);
+        return ResultUtil.res(${table.entityPath}Service.removeByIds(idList));
+    }
+
+    @PostMapping("/list")
+    @ApiOperation(value = "查询", notes = "查询", httpMethod = "POST")
+    public Result getList(${entity} ${table.entityPath}){
+        QueryWrapper<${entity}> wrapper = new QueryWrapper<>(${table.entityPath});
+        List<${entity}> list =  ${table.entityPath}Service.list(wrapper);
+        return ResultUtil.res(list);
+    }
+
+    @PostMapping("/pageList")
+    @ApiOperation(value = "分页查询", notes = "分页", httpMethod = "POST")
+    public Result pageList(${entity} ${table.entityPath}, PageParam pageParam){
+        QueryWrapper<${entity}> wrapper = new QueryWrapper();
+        IPage<${entity}> page = new Page<>(pageParam.getPageNum(), pageParam.getPageSize(), true);
+        IPage<${entity}> rows = ${table.entityPath}Service.page(page, wrapper);
+        return ResultUtil.res(rows);
+    }
+}
+

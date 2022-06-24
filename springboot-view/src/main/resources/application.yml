@@ -1,0 +1,5 @@
+server:
+  port: 1306
+spring:
+  profiles:
+    include: common

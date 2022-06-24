@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "minio",
+      "type": "com.song.springbootminio.config.MinIoClientConfig",
+      "sourceType": "com.song.springbootminio.config.MinIoClientConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "minio.access-key",
+      "type": "java.lang.String",
+      "sourceType": "com.song.springbootminio.config.MinIoClientConfig"
+    },
+    {
+      "name": "minio.endpoint",
+      "type": "java.lang.String",
+      "sourceType": "com.song.springbootminio.config.MinIoClientConfig"
+    },
+    {
+      "name": "minio.secret-key",
+      "type": "java.lang.String",
+      "sourceType": "com.song.springbootminio.config.MinIoClientConfig"
+    }
+  ],
+  "hints": []
+}

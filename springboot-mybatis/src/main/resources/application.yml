@@ -1,0 +1,5 @@
+server:
+  port: 1302
+spring:
+  profiles:
+    include: common

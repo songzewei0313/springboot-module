@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.song</groupId>
+        <artifactId>springboot_demo</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <!--
+        子项目引入父项目不能有这个，不然打包会报错
+        <relativePath/>
+        -->
+    </parent>
+
+    <artifactId>springboot-graphics</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>springboot-graphics</name>
+    <description>springboot-graphics</description>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+    <dependencies>
+        <!--把common项目当作依赖引入当前项目-->
+        <dependency>
+            <groupId>com.song</groupId>
+            <artifactId>springboot-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
